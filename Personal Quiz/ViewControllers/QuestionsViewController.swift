@@ -24,8 +24,11 @@ class QuestionsViewController: UIViewController {
     @IBOutlet var rangedSlider: UISlider!
     
     @IBOutlet var questionProgressView: UIProgressView!
+    
     // MARK: - Private Properties
     private var questions = Question.getQuestions()
+    private var questionIndex = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,18 @@ extension QuestionsViewController {
         for stackView in [singleStackView, multipleStackView, rangedStackView] {
             stackView?.isHidden = true
         }
+        
+        // Get Current Question
+        let currentQuestion = questions[questionIndex]
+        
+        // Set Current Question for question Label
+        questionLabel.text = currentQuestion.text
+        
+        // Calculate Progress
+        let totalProgress = Float(questionIndex) / Float(questions.count)
+        
+        // Set Progress for questionProgressView
+        questionProgressView.setProgress(totalProgress, animated: true)
     }
     
     

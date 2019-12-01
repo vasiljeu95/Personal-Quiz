@@ -30,10 +30,25 @@ class QuestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateUI()
     }
     
     deinit {
         print("QuestionsViewController is delocated")
     }
+}
+
+
+
+// MARK: - Private Methods
+extension QuestionsViewController {
+    
+    private func updateUI() {
+        // Hide everything
+        for stackView in [singleStackView, multipleStackView, rangedStackView] {
+            stackView?.isHidden = true
+        }
+    }
+    
+    
 }
